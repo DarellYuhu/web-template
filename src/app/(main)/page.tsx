@@ -1,11 +1,11 @@
-import { Header } from "@/components/header";
 import { Highlight } from "@/components/highlight";
+import { TopPicks } from "@/components/top-picks";
 
 export default function HomePage() {
   return (
     <div>
-      <Header />
       <Highlight />
+      <TopPicks />
     </div>
   );
 }

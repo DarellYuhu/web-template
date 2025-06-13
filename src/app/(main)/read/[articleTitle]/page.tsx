@@ -6,11 +6,11 @@ export default function ArticlePage() {
   return (
     <article>
       <ArticleHeader />
-      <div className="flex flex-row">
-        <div className="markdown w-3/4 px-10">
+      <div className="flex flex-row p-10 gap-8">
+        <div className="markdown w-3/4">
           <Markdown>{article.article}</Markdown>
         </div>
-        <div className="grow">
+        <div className="w-1/4">
           <MoreArticle />
         </div>
       </div>
@@ -19,9 +19,7 @@ export default function ArticlePage() {
 }
 
 const article: Article = {
-  article: `# Lorem Ipsum: A Placeholder Story
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi viverra, arcu ac dignissim aliquam, tortor dolor euismod nulla, sit amet lobortis nisl elit id est. Curabitur non tellus nec lorem efficitur tempor. Integer imperdiet, turpis nec sagittis imperdiet, elit orci porttitor neque, at vulputate magna sem sed sapien. Vivamus in orci sed libero dignissim finibus. Etiam feugiat tincidunt lectus at dictum. Cras porttitor purus a nunc fermentum, sed rhoncus neque laoreet. Proin tincidunt eros vel tincidunt fermentum. In hac habitasse platea dictumst.
+  article: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi viverra, arcu ac dignissim aliquam, tortor dolor euismod nulla, sit amet lobortis nisl elit id est. Curabitur non tellus nec lorem efficitur tempor. Integer imperdiet, turpis nec sagittis imperdiet, elit orci porttitor neque, at vulputate magna sem sed sapien. Vivamus in orci sed libero dignissim finibus. Etiam feugiat tincidunt lectus at dictum. Cras porttitor purus a nunc fermentum, sed rhoncus neque laoreet. Proin tincidunt eros vel tincidunt fermentum. In hac habitasse platea dictumst.
 
 Aenean mattis dapibus risus, sed dictum lacus porttitor nec. Nulla facilisi. Pellentesque laoreet sollicitudin quam, in lacinia leo bibendum a. Aliquam erat volutpat. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris facilisis viverra lacus sed facilisis. Cras congue dolor vitae sagittis blandit.
 

@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { User2 } from "lucide-react";
+import readingTime from "reading-time";
 
 export const ArticleHeader = () => {
   let selected = 1;
@@ -29,7 +30,7 @@ export const ArticleHeader = () => {
             <div className="flex flex-row gap-2 items-center h-3">
               <p>{article.datePublished}</p>
               <Separator orientation="vertical" className="bg-neutral-400" />
-              <p>{article.readTime}</p>
+              <p>{readingTime(article.article).minutes}</p>
             </div>
           </div>
 
@@ -47,6 +48,7 @@ export const ArticleHeader = () => {
             <img
               className="h-[400px] w-[550px] object-cover"
               src={article.imageUrl}
+              alt="article image"
             />
 
             {/* detail */}
@@ -101,7 +103,6 @@ const article: Article = {
   authorName: "Jane Doe",
   category: "Technology",
   datePublished: "September 25, 2023",
-  readTime: "8 min",
   imageUrl:
     "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
 };

@@ -1,3 +1,4 @@
+import readingTime from "reading-time";
 import { Separator } from "./ui/separator";
 
 export const Highlight = () => {
@@ -56,7 +57,7 @@ export const Highlight = () => {
               <div className="text-sm flex flex-row gap-2">
                 <p>{article.datePublished}</p>
                 ---
-                <p>{article.readTime}</p>
+                <p>{readingTime(article.article).minutes}</p>
               </div>
             </div>
             <p className="text-5xl line-clamp-2">{article.title}</p>
@@ -71,7 +72,7 @@ export const Highlight = () => {
             <div className="space-y-5">
               <div className="flex flex-row gap-5 text-sm">
                 <p>{article.category}</p>
-                <p>{article.readTime}</p>
+                <p>{readingTime(article.article).minutes}</p>
               </div>
               <p className="line-clamp-4 text-6xl">{article.title}</p>
             </div>
@@ -101,7 +102,7 @@ export const Highlight = () => {
                   <div className="flex flex-col justify-center">
                     <div className="space-x-4 flex flex-row text-sm">
                       <p>{article.category}</p>
-                      <p>{article.readTime}</p>
+                      <p>{readingTime(article.article).minutes}</p>
                     </div>
                     <div className="w-64">
                       <p className="line-clamp-2">{article.title}</p>
@@ -170,7 +171,7 @@ export const Highlight = () => {
                       orientation="vertical"
                       className="bg-neutral-500"
                     />
-                    <p>{article.readTime}</p>
+                    <p>{readingTime(article.article).minutes}</p>
                   </div>
                 </div>
               </div>
@@ -190,7 +191,6 @@ const article: Article = {
   authorName: "John Doe",
   category: "Entertainment",
   datePublished: "June 06, 2025",
-  readTime: "5 min",
   imageUrl:
     "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
 };
@@ -201,7 +201,6 @@ const more: Article[] = [
     title:
       "Veritatis vel eum accusamus repudiandae aspernatur ipsa et ducimus.",
     category: "Entertainment",
-    readTime: "5 min",
     datePublished: "June 06, 2025",
     article: `Voluptas incidunt debitis ab enim. Odit dicta adipisci fugiat omnis saepe. Dolor voluptatem reprehenderit facilis quos quos quae molestiae tenetur. Et et dolorum possimus ex.
     Et cupiditate soluta corporis laborum in iste. Fugiat voluptatem deleniti et voluptates vel quis ab repellat. Sunt error nihil doloremque. Dolorem ducimus assumenda.
@@ -213,7 +212,6 @@ const more: Article[] = [
     authorName: "Jane Smith",
     title: "Incredible advancements in technology and science.",
     category: "Science & Tech",
-    readTime: "7 min",
     datePublished: "July 10, 2025",
     article: `Voluptas incidunt debitis ab enim. Odit dicta adipisci fugiat omnis saepe. Dolor voluptatem reprehenderit facilis quos quos quae molestiae tenetur. Et et dolorum possimus ex.
     Et cupiditate soluta corporis laborum in iste. Fugiat voluptatem deleniti et voluptates vel quis ab repellat. Sunt error nihil doloremque. Dolorem ducimus assumenda.
@@ -225,7 +223,6 @@ const more: Article[] = [
     authorName: "Alice Johnson",
     title: "Exploring the depths of the ocean and its mysteries.",
     category: "World",
-    readTime: "6 min",
     datePublished: "August 15, 2025",
     article: `Voluptas incidunt debitis ab enim. Odit dicta adipisci fugiat omnis saepe. Dolor voluptatem reprehenderit facilis quos quos quae molestiae tenetur. Et et dolorum possimus ex.
     Et cupiditate soluta corporis laborum in iste. Fugiat voluptatem deleniti et voluptates vel quis ab repellat. Sunt error nihil doloremque. Dolorem ducimus assumenda.
@@ -238,7 +235,6 @@ const more: Article[] = [
 const popular: Article[] = [
   {
     category: "Politics",
-    readTime: "5 min",
     title:
       "Tempore autem molestiae veritatis mollitia ad voluptate. Suscipit distinctio impedit alias placeat ea labore ipsam excepturi repellendus.",
     imageUrl:
@@ -249,7 +245,6 @@ const popular: Article[] = [
   },
   {
     category: "Politics",
-    readTime: "5 min",
     title:
       "Tempore autem molestiae veritatis mollitia ad voluptate. Suscipit distinctio impedit alias placeat ea labore ipsam excepturi repellendus.",
     imageUrl:
@@ -260,7 +255,6 @@ const popular: Article[] = [
   },
   {
     category: "Politics",
-    readTime: "5 min",
     title:
       "Tempore autem molestiae veritatis mollitia ad voluptate. Suscipit distinctio impedit alias placeat ea labore ipsam excepturi repellendus.",
     imageUrl:
@@ -271,7 +265,6 @@ const popular: Article[] = [
   },
   {
     category: "Politics",
-    readTime: "5 min",
     title:
       "Tempore autem molestiae veritatis mollitia ad voluptate. Suscipit distinctio impedit alias placeat ea labore ipsam excepturi repellendus.",
     imageUrl:
@@ -282,7 +275,6 @@ const popular: Article[] = [
   },
   {
     category: "Politics",
-    readTime: "5 min",
     title:
       "Tempore autem molestiae veritatis mollitia ad voluptate. Suscipit distinctio impedit alias placeat ea labore ipsam excepturi repellendus.",
     imageUrl:

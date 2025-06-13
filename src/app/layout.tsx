@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Tinos } from "next/font/google";
+import { Tinos } from "next/font/google";
 import "./globals.css";
 
 const tinos = Tinos({

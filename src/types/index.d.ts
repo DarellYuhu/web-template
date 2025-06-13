@@ -5,5 +5,4 @@ type Article = {
   authorName: string;
   datePublished: string;
   imageUrl: string;
-  readTime: string;
 };

@@ -1,0 +1,9 @@
+serverAddr = "172.18.176.1"
+serverPort = 7000
+
+[[proxies]]
+name = "web-template"
+type = 'tcp'
+localIp = "127.0.0.1"
+localPort = 3000
+remotePort = 6000

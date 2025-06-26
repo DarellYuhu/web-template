@@ -32,7 +32,6 @@ Nam porta ipsum in enim sodales faucibus. Integer dictum dapibus bibendum. Aliqu
   authorName: "",
   category: "",
   datePublished: "",
-  readTime: "",
   imageUrl: "",
   title: "",
 };

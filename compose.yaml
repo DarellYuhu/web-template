@@ -1,0 +1,13 @@
+services:
+  app:
+    image: web-template
+    ports:
+      - "127.0.0.1:3000:3000"
+
+  gateway:
+    image: snowdreamtech/frps:nightly-alpine3.21
+    ports:
+      - "7000:7000"
+      - "6001:6000"
+    volumes:
+      - ./frps.toml:/etc/frps/frps.toml

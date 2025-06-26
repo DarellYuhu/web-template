@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import readingTime from "reading-time";
 
 export const TopPicks = () => {
   let selected = 1;
@@ -111,7 +112,9 @@ export const TopPicks = () => {
                     orientation="vertical"
                     className="bg-neutral-700"
                   />
-                  <p className="text-sm">{article.readTime}</p>
+                  <p className="text-sm">
+                    {readingTime(article.article).minutes}
+                  </p>
                 </div>
               </div>
             ))}
@@ -149,7 +152,9 @@ export const TopPicks = () => {
                     orientation="vertical"
                     className="bg-neutral-700"
                   />
-                  <p className="text-sm">{article.readTime}</p>
+                  <p className="text-sm">
+                    {readingTime(article.article).minutes}
+                  </p>
                 </div>
               </div>
             ))}
@@ -167,7 +172,6 @@ const topPicks: Article[] = [
     title:
       "Tenetur eligendi voluptatem totam iusto assumenda molestias excepturi. Quos deserunt dolorem cumque voluptatem earum ut.",
     category: "Politics",
-    readTime: "5 min",
     datePublished: "January 1, 2025",
     authorName: "John Doe",
     imageUrl:
@@ -180,7 +184,6 @@ const topPicks: Article[] = [
     title:
       "Tenetur eligendi voluptatem totam iusto assumenda molestias excepturi. Quos deserunt dolorem cumque voluptatem earum ut.",
     category: "Politics",
-    readTime: "5 min",
     datePublished: "January 2, 2025",
     authorName: "John Doe",
     imageUrl:
@@ -193,7 +196,6 @@ const topPicks: Article[] = [
     title:
       "Tenetur eligendi voluptatem totam iusto assumenda molestias excepturi. Quos deserunt dolorem cumque voluptatem earum ut.",
     category: "Politics",
-    readTime: "5 min",
     datePublished: "January 3, 2025",
     authorName: "John Doe",
     imageUrl:
@@ -206,7 +208,6 @@ const topPicks: Article[] = [
     title:
       "Tenetur eligendi voluptatem totam iusto assumenda molestias excepturi. Quos deserunt dolorem cumque voluptatem earum ut.",
     category: "Politics",
-    readTime: "5 min",
     datePublished: "January 4, 2025",
     authorName: "John Doe",
     imageUrl:

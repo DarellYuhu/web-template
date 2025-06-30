@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Article {
+  id            String     @unique @default(uuid())
+  title         String
+  article       String
+  category      String
+  authorName    String
+  datePublished DateTime
+  imageUrl      String
+  Highlight     Highlight?
+  TopPick       TopPick?
+  Popular       Popular?
+}
+
+model Highlight {
+  articleId String  @unique
+  article   Article @relation(fields: [articleId], references: [id])
+}
+
+model TopPick {
+  articleId String  @unique
+  article   Article @relation(fields: [articleId], references: [id])
+}
+
+model Popular {
+  articleId String  @unique
+  article   Article @relation(fields: [articleId], references: [id])
+}
+
+model Category {
+  id   String @unique @default(uuid())
+  name String @unique
+}

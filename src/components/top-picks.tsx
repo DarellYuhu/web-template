@@ -4,8 +4,10 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import readingTime from "reading-time";
+import { Article } from "@/generated/prisma";
+import { format } from "date-fns";
 
-export const TopPicks = () => {
+export const TopPicks = ({ data }: { data: Article[] }) => {
   let selected = 1;
   selected = Math.floor(Math.random() * 4) + 1;
 
@@ -17,7 +19,7 @@ export const TopPicks = () => {
             <p className="text-2xl font-semibold">Top Picks</p>
           </div>
           <div className="flex flex-row justify-between">
-            {topPicks.slice(0, 4).map((article, idx) => (
+            {data.slice(0, 4).map((article, idx) => (
               <div
                 key={idx}
                 className="w-72 space-y-3 rounded-md border p-2 shadow-md"
@@ -37,7 +39,7 @@ export const TopPicks = () => {
                     <p className="text-[14px] font-semibold">
                       {article.authorName}
                     </p>
-                    <p className="text-[12px]">{article.datePublished}</p>
+                    <p>{format(article.datePublished, "MMM dd, yyyy")}</p>
                   </div>
                 </div>
               </div>
@@ -58,7 +60,7 @@ export const TopPicks = () => {
             </Link>
           </div>
           <div className="flex flex-row justify-between">
-            {topPicks.slice(0, 4).map((article, idx) => (
+            {data.slice(0, 4).map((article, idx) => (
               <div key={idx} className="w-72 space-y-3">
                 <img
                   className="h-48 w-full object-cover rounded-md"
@@ -71,7 +73,7 @@ export const TopPicks = () => {
                     orientation="vertical"
                     className="bg-neutral-700"
                   />
-                  <p className="text-sm">{article.datePublished}</p>
+                  <p>{format(article.datePublished, "MMM dd, yyyy")}</p>
                 </div>
                 <p className="font-semibold line-clamp-2">{article.title}</p>
               </div>
@@ -90,7 +92,7 @@ export const TopPicks = () => {
             </Button>
           </div>
           <div className="flex flex-row justify-between">
-            {topPicks.slice(0, 4).map((article, idx) => (
+            {data.slice(0, 4).map((article, idx) => (
               <div key={idx} className="w-64 space-y-3">
                 <div className="size-64 relative">
                   <img
@@ -135,7 +137,7 @@ export const TopPicks = () => {
             </Link>
           </div>
           <div className="flex flex-row justify-between">
-            {topPicks.slice(0, 4).map((article, idx) => (
+            {data.slice(0, 4).map((article, idx) => (
               <div key={idx} className="w-64 space-y-3">
                 <img
                   className="size-64 object-cover"
@@ -163,54 +165,3 @@ export const TopPicks = () => {
       );
   }
 };
-
-const topPicks: Article[] = [
-  {
-    article: `Magnam esse accusamus sunt et repellat quis voluptatem aut. Iure repellendus hic molestiae architecto soluta voluptatem temporibus. Voluptatem quibusdam laboriosam distinctio sequi saepe ea esse. Expedita sapiente dolores cumque laboriosam est dolore. Autem occaecati laborum eligendi.
-        Alias asperiores optio laborum. Vitae et nam consequatur aut molestiae aut et et vel. Accusamus magnam ad omnis corporis iste fugiat nam. Incidunt ex cupiditate a dicta sit ut nihil.
-        Nesciunt mollitia ut minima omnis. Optio consectetur in magni consequuntur minus soluta et. Modi magni laborum qui assumenda debitis voluptatem libero iste blanditiis.`,
-    title:
-      "Tenetur eligendi voluptatem totam iusto assumenda molestias excepturi. Quos deserunt dolorem cumque voluptatem earum ut.",
-    category: "Politics",
-    datePublished: "January 1, 2025",
-    authorName: "John Doe",
-    imageUrl:
-      "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-  },
-  {
-    article: `Magnam esse accusamus sunt et repellat quis voluptatem aut. Iure repellendus hic molestiae architecto soluta voluptatem temporibus. Voluptatem quibusdam laboriosam distinctio sequi saepe ea esse. Expedita sapiente dolores cumque laboriosam est dolore. Autem occaecati laborum eligendi.
-        Alias asperiores optio laborum. Vitae et nam consequatur aut molestiae aut et et vel. Accusamus magnam ad omnis corporis iste fugiat nam. Incidunt ex cupiditate a dicta sit ut nihil.
-        Nesciunt mollitia ut minima omnis. Optio consectetur in magni consequuntur minus soluta et. Modi magni laborum qui assumenda debitis voluptatem libero iste blanditiis.`,
-    title:
-      "Tenetur eligendi voluptatem totam iusto assumenda molestias excepturi. Quos deserunt dolorem cumque voluptatem earum ut.",
-    category: "Politics",
-    datePublished: "January 2, 2025",
-    authorName: "John Doe",
-    imageUrl:
-      "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-  },
-  {
-    article: `Magnam esse accusamus sunt et repellat quis voluptatem aut. Iure repellendus hic molestiae architecto soluta voluptatem temporibus. Voluptatem quibusdam laboriosam distinctio sequi saepe ea esse. Expedita sapiente dolores cumque laboriosam est dolore. Autem occaecati laborum eligendi.
-        Alias asperiores optio laborum. Vitae et nam consequatur aut molestiae aut et et vel. Accusamus magnam ad omnis corporis iste fugiat nam. Incidunt ex cupiditate a dicta sit ut nihil.
-        Nesciunt mollitia ut minima omnis. Optio consectetur in magni consequuntur minus soluta et. Modi magni laborum qui assumenda debitis voluptatem libero iste blanditiis.`,
-    title:
-      "Tenetur eligendi voluptatem totam iusto assumenda molestias excepturi. Quos deserunt dolorem cumque voluptatem earum ut.",
-    category: "Politics",
-    datePublished: "January 3, 2025",
-    authorName: "John Doe",
-    imageUrl:
-      "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-  },
-  {
-    article: `Magnam esse accusamus sunt et repellat quis voluptatem aut. Iure repellendus hic molestiae architecto soluta voluptatem temporibus. Voluptatem quibusdam laboriosam distinctio sequi saepe ea esse. Expedita sapiente dolores cumque laboriosam est dolore. Autem occaecati laborum eligendi.
-        Alias asperiores optio laborum. Vitae et nam consequatur aut molestiae aut et et vel. Accusamus magnam ad omnis corporis iste fugiat nam. Incidunt ex cupiditate a dicta sit ut nihil.
-        Nesciunt mollitia ut minima omnis. Optio consectetur in magni consequuntur minus soluta et. Modi magni laborum qui assumenda debitis voluptatem libero iste blanditiis.`,
-    title:
-      "Tenetur eligendi voluptatem totam iusto assumenda molestias excepturi. Quos deserunt dolorem cumque voluptatem earum ut.",
-    category: "Politics",
-    datePublished: "January 4, 2025",
-    authorName: "John Doe",
-    imageUrl:
-      "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-  },
-];

@@ -6,7 +6,6 @@ export default async function CategoryPage({
   params: Promise<{ name: string }>;
 }) {
   const { name } = await params;
-  const data = await getArticles({ category: name });
-  console.log(data);
+  await getArticles({ category: name });
   return <div>Category Page </div>;
 }

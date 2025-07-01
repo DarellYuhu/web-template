@@ -4,10 +4,10 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import readingTime from "reading-time";
-import { Article } from "@/generated/prisma";
 import { format } from "date-fns";
+import { TopPickType } from "@/api/top-picks";
 
-export const TopPicks = ({ data }: { data: Article[] }) => {
+export const TopPicks = ({ data }: { data: TopPickType }) => {
   let selected = 1;
   selected = Math.floor(Math.random() * 4) + 1;
 

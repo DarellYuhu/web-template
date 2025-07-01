@@ -1,12 +1,13 @@
 import { PrismaClient } from "@/generated/prisma";
 import { faker } from "@faker-js/faker";
 import { Prisma } from "../src/generated/prisma";
+import { articleSchema, categorySchema, otherSchema } from "@/schema";
 
 const prisma = new PrismaClient();
 const FROM_CONTROLLER = process.env.FROM_CONTROLLER;
 
 async function main() {
-  if (FROM_CONTROLLER) await seedFromController();
+  if (FROM_CONTROLLER === "true") await seedFromController();
   else await defaultSeeder();
 }
 
@@ -26,11 +27,11 @@ async function seedFromController() {
   )
     throw new Error("SUPPLY ALL THE DATA");
   const parsed = {
-    categories: JSON.parse(CATEGORIES_DATA),
-    articles: JSON.parse(ARTICLES_DATA),
-    highlights: JSON.parse(HIGHLIGHTS_DATA),
-    topPicks: JSON.parse(TOPPICKS_DATA),
-    populars: JSON.parse(POPULARS_DATA),
+    categories: categorySchema.parse(JSON.parse(CATEGORIES_DATA)),
+    articles: articleSchema.parse(JSON.parse(ARTICLES_DATA)),
+    highlights: otherSchema.parse(JSON.parse(HIGHLIGHTS_DATA)),
+    topPicks: otherSchema.parse(JSON.parse(TOPPICKS_DATA)),
+    populars: otherSchema.parse(JSON.parse(POPULARS_DATA)),
   };
   await prisma.$transaction([
     prisma.category.createMany({ data: parsed.categories }),

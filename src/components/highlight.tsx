@@ -1,14 +1,15 @@
 import readingTime from "reading-time";
 import { Separator } from "./ui/separator";
-import { Article } from "@/generated/prisma";
 import { format } from "date-fns";
+import { HighlightType } from "@/api/highlights";
+import { PopularType } from "@/api/popular";
 
 export const Highlight = ({
   highlights,
   populars,
 }: {
-  highlights: Article[];
-  populars: Article[];
+  highlights: HighlightType;
+  populars: PopularType;
 }) => {
   const more = highlights.slice(1);
   const mainArticle = highlights[0];

@@ -12,10 +12,11 @@ datasource db {
 }
 
 model Article {
-  id            String     @unique @default(uuid())
+  id            String     @id @default(uuid())
   title         String
   article       String
-  category      String
+  categoryId    String
+  category      Category   @relation(fields: [categoryId], references: [id])
   authorName    String
   datePublished DateTime
   imageUrl      String
@@ -40,6 +41,8 @@ model Popular {
 }
 
 model Category {
-  id   String @unique @default(uuid())
-  name String @unique
+  id      String    @id @default(uuid())
+  name    String    @unique
+  short   String    @unique
+  Article Article[]
 }

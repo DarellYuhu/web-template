@@ -14,9 +14,10 @@ datasource db {
 model Article {
   id            String     @id @default(uuid())
   title         String
-  article       String
+  contents      String
   categoryId    String
   category      Category   @relation(fields: [categoryId], references: [id])
+  slug          String     @unique
   authorName    String
   datePublished DateTime
   imageUrl      String
@@ -43,6 +44,6 @@ model Popular {
 model Category {
   id      String    @id @default(uuid())
   name    String    @unique
-  short   String    @unique
+  slug    String    @unique
   Article Article[]
 }

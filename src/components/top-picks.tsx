@@ -30,7 +30,7 @@ export const TopPicks = ({ data }: { data: TopPickType }) => {
                   alt="article image"
                 />
                 <p className="font-semibold line-clamp-2">{article.title}</p>
-                <p className="text-sm line-clamp-2">{article.article}</p>
+                <p className="text-sm line-clamp-2">{article.contents}</p>
                 <div className="flex flex-row items-center gap-3 p-2 bg-neutral-100 rounded-lg">
                   <div className="rounded-lg p-2 bg-neutral-200">
                     <User size={25} />
@@ -115,7 +115,7 @@ export const TopPicks = ({ data }: { data: TopPickType }) => {
                     className="bg-neutral-700"
                   />
                   <p className="text-sm">
-                    {readingTime(article.article).minutes}
+                    {readingTime(article.contents).minutes}
                   </p>
                 </div>
               </div>
@@ -146,7 +146,7 @@ export const TopPicks = ({ data }: { data: TopPickType }) => {
                 />
                 <div>
                   <p className="font-semibold line-clamp-2">{article.title}</p>
-                  <p className="text-sm line-clamp-2">{article.article}</p>
+                  <p className="text-sm line-clamp-2">{article.contents}</p>
                 </div>
                 <div className="flex flex-row h-3 items-center gap-2">
                   <p className="text-sm">{article.category}</p>
@@ -155,7 +155,7 @@ export const TopPicks = ({ data }: { data: TopPickType }) => {
                     className="bg-neutral-700"
                   />
                   <p className="text-sm">
-                    {readingTime(article.article).minutes}
+                    {readingTime(article.contents).minutes}
                   </p>
                 </div>
               </div>

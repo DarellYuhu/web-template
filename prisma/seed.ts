@@ -2,6 +2,7 @@ import { PrismaClient } from "@/generated/prisma";
 import { faker } from "@faker-js/faker";
 import { Prisma } from "../src/generated/prisma";
 import { articleSchema, categorySchema, otherSchema } from "@/schema";
+import slugify from "slugify";
 
 const prisma = new PrismaClient();
 const FROM_CONTROLLER = process.env.FROM_CONTROLLER;
@@ -51,20 +52,24 @@ async function defaultSeeder() {
     "Finance",
   ];
   const categories = await prisma.category.createManyAndReturn({
-    data: CATEGORY_LIST.map((cat) => ({ name: cat, short: cat.trim() })),
+    data: CATEGORY_LIST.map((cat) => ({ name: cat, slug: slugify(cat) })),
   });
 
   const articles: Prisma.ArticleCreateManyInput[] = Array.from({
     length: 20,
-  }).map(() => ({
-    article: faker.lorem.paragraphs(3),
-    authorName: faker.person.fullName(),
-    categoryId: faker.helpers.arrayElement(categories.map((item) => item.id)),
-    datePublished: faker.date.past(),
-    imageUrl: faker.image.url(),
-    title: faker.lorem.sentence(),
-    id: faker.string.uuid(),
-  }));
+  }).map(() => {
+    const title = faker.lorem.sentence();
+    return {
+      contents: faker.lorem.paragraphs(3),
+      authorName: faker.person.fullName(),
+      categoryId: faker.helpers.arrayElement(categories.map((item) => item.id)),
+      datePublished: faker.date.past(),
+      imageUrl: faker.image.url(),
+      title,
+      slug: slugify(title),
+      id: faker.string.uuid(),
+    };
+  });
   const prismaArticle = prisma.article.createMany({ data: articles });
 
   const highlights: Prisma.HighlightCreateManyInput[] = faker.helpers

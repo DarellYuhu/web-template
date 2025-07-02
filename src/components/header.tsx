@@ -17,7 +17,7 @@ export const Header = ({ categories }: { categories: Category[] }) => {
               {categories.map((menu, idx) => (
                 <Link
                   key={idx}
-                  href={`/category/${menu.short}`}
+                  href={`/category/${menu.slug}`}
                   className="font-semibold hover:border-b-2 border-red-700 pb-1"
                 >
                   {menu.name}
@@ -50,7 +50,7 @@ export const Header = ({ categories }: { categories: Category[] }) => {
               {categories.map((menu, idx) => (
                 <Link
                   key={idx}
-                  href={`/category/${menu.short}`}
+                  href={`/category/${menu.slug}`}
                   className="font-semibold border-b-2 border-transparent hover:border-red-700 pb-1"
                 >
                   {menu.name}
@@ -70,7 +70,7 @@ export const Header = ({ categories }: { categories: Category[] }) => {
               {categories.map((menu, idx) => (
                 <Link
                   key={idx}
-                  href={`/category/${menu.short}`}
+                  href={`/category/${menu.slug}`}
                   className="font-semibold hover:border-b-2 border-red-700 pb-1"
                 >
                   {menu.name}
@@ -93,7 +93,7 @@ export const Header = ({ categories }: { categories: Category[] }) => {
             {categories.map((menu, idx) => (
               <Link
                 key={idx}
-                href={`/category/${menu.short}`}
+                href={`/category/${menu.slug}`}
                 className="font-semibold hover:border-b-2 border-red-700 pb-1"
               >
                 {menu.name}

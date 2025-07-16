@@ -13,6 +13,7 @@ async function main() {
 }
 
 async function seedFromController() {
+  console.log("CONTROLLER SEEDING");
   const CATEGORIES_DATA = process.env.CATEGORIES_DATA;
   const ARTICLES_DATA = process.env.ARTICLES_DATA;
   const HIGHLIGHTS_DATA = process.env.HIGHLIGHTS_DATA;
@@ -21,7 +22,7 @@ async function seedFromController() {
 
   if (
     !ARTICLES_DATA ||
-    !CATEGORIES_DATA! ||
+    !CATEGORIES_DATA ||
     !HIGHLIGHTS_DATA ||
     !TOPPICKS_DATA ||
     !POPULARS_DATA
@@ -64,7 +65,7 @@ async function defaultSeeder() {
       authorName: faker.person.fullName(),
       categoryId: faker.helpers.arrayElement(categories.map((item) => item.id)),
       datePublished: faker.date.past(),
-      imageUrl: faker.image.url(),
+      imageUrl: "/assets/news-img-placeholder.png",
       title,
       slug: slugify(title),
       id: faker.string.uuid(),

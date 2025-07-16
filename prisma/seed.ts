@@ -3,6 +3,7 @@ import { faker } from "@faker-js/faker";
 import { Prisma } from "../src/generated/prisma";
 import { articleSchema, categorySchema, otherSchema } from "@/schema";
 import slugify from "slugify";
+import { readFile } from "fs/promises";
 
 const prisma = new PrismaClient();
 const FROM_CONTROLLER = process.env.FROM_CONTROLLER;
@@ -10,6 +11,13 @@ const FROM_CONTROLLER = process.env.FROM_CONTROLLER;
 async function main() {
   if (FROM_CONTROLLER === "true") await seedFromController();
   else await defaultSeeder();
+}
+
+async function loadJsonEnvVar(path: string) {
+  // const path = process.env[pathEnv];
+  // if (!path) throw new Error(`${pathEnv} is not set`);
+  const content = await readFile(path, "utf-8");
+  return JSON.parse(content);
 }
 
 async function seedFromController() {
@@ -26,14 +34,15 @@ async function seedFromController() {
     !HIGHLIGHTS_DATA ||
     !TOPPICKS_DATA ||
     !POPULARS_DATA
-  )
+  ) {
     throw new Error("SUPPLY ALL THE DATA");
+  }
   const parsed = {
-    categories: categorySchema.parse(JSON.parse(CATEGORIES_DATA)),
-    articles: articleSchema.parse(JSON.parse(ARTICLES_DATA)),
-    highlights: otherSchema.parse(JSON.parse(HIGHLIGHTS_DATA)),
-    topPicks: otherSchema.parse(JSON.parse(TOPPICKS_DATA)),
-    populars: otherSchema.parse(JSON.parse(POPULARS_DATA)),
+    categories: categorySchema.parse(await loadJsonEnvVar(CATEGORIES_DATA)),
+    articles: articleSchema.parse(await loadJsonEnvVar(ARTICLES_DATA)),
+    highlights: otherSchema.parse(await loadJsonEnvVar(HIGHLIGHTS_DATA)),
+    topPicks: otherSchema.parse(await loadJsonEnvVar(TOPPICKS_DATA)),
+    populars: otherSchema.parse(await loadJsonEnvVar(POPULARS_DATA)),
   };
   await prisma.$transaction([
     prisma.category.createMany({ data: parsed.categories }),

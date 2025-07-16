@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 
 export const getArticles = async ({ category }: { category?: string }) => {
   const data = await prisma.article.findMany({
-    where: { category: { name: category } },
+    where: { category: { slug: category } },
     include: { category: true },
   });
   return data.map((item) => ({ ...item, category: item.category.name }));

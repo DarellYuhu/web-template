@@ -2,7 +2,7 @@ import { z } from "zod/v4";
 
 export const categorySchema = z.array(
   z.object({
-    id: z.uuid(),
+    id: z.string().nonempty(),
     name: z.string(),
     slug: z.string(),
   }),
@@ -10,7 +10,7 @@ export const categorySchema = z.array(
 
 export const articleSchema = z.array(
   z.object({
-    id: z.uuid(),
+    id: z.string().nonempty(),
     title: z.string(),
     contents: z.string(),
     categoryId: z.string(),
@@ -23,6 +23,6 @@ export const articleSchema = z.array(
 
 export const otherSchema = z.array(
   z.object({
-    articleId: z.uuid(),
+    articleId: z.string().nonempty(),
   }),
 );

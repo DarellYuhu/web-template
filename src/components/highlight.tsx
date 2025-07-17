@@ -13,7 +13,7 @@ export const Highlight = ({
   populars: PopularType;
 }) => {
   const more = highlights.slice(1);
-  const mainArticle: HighlightType[number] | undefined = highlights[0];
+  const mainArticle = highlights[0] as HighlightType[number] | undefined;
   let selected = 1;
   selected = Math.floor(Math.random() * 4) + 1;
 
@@ -78,9 +78,13 @@ export const Highlight = ({
                 </div>
 
                 <div className="text-sm flex flex-row gap-2">
-                  <p>{format(mainArticle?.datePublished, "MMM dd, yyyy")}</p>
+                  {mainArticle && (
+                    <p>{format(mainArticle?.datePublished, "MMM dd, yyyy")}</p>
+                  )}
                   ---
-                  <p>{readingTime(mainArticle?.contents).minutes}</p>
+                  {mainArticle && (
+                    <p>{readingTime(mainArticle?.contents).minutes}</p>
+                  )}
                 </div>
               </div>
               <p className="text-5xl line-clamp-2">{mainArticle?.title}</p>
@@ -97,7 +101,9 @@ export const Highlight = ({
               <div className="space-y-5">
                 <div className="flex flex-row gap-5 text-sm">
                   <p>{mainArticle?.category}</p>
-                  <p>{readingTime(mainArticle?.contents).minutes}</p>
+                  {mainArticle && (
+                    <p>{readingTime(mainArticle?.contents).minutes}</p>
+                  )}
                 </div>
                 <p className="line-clamp-4 text-6xl">{mainArticle?.title}</p>
               </div>
@@ -166,7 +172,9 @@ export const Highlight = ({
                     orientation="vertical"
                     className="h-3 bg-neutral-500"
                   />
-                  <p>{format(mainArticle?.datePublished, "MMM dd, yyyy")}</p>
+                  {mainArticle && (
+                    <p>{format(mainArticle?.datePublished, "MMM dd, yyyy")}</p>
+                  )}
                 </div>
               </div>
               <div className="h-[500px] justify-center flex">
@@ -196,7 +204,8 @@ export const Highlight = ({
                         className="bg-neutral-500"
                       />
                       <p>
-                        {format(mainArticle?.datePublished, "MMM dd, yyyy")}
+                        {mainArticle &&
+                          format(mainArticle?.datePublished, "MMM dd, yyyy")}
                       </p>
                     </div>
                     <p className="line-clamp-2 text-white">{article.title}</p>

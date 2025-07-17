@@ -13,7 +13,7 @@ export const Highlight = ({
   populars: PopularType;
 }) => {
   const more = highlights.slice(1);
-  const mainArticle = highlights[0];
+  const mainArticle: HighlightType[number] | undefined = highlights[0];
   let selected = 1;
   selected = Math.floor(Math.random() * 4) + 1;
 
@@ -60,30 +60,30 @@ export const Highlight = ({
               </Link>
             ))}
           </div>
-          <Link href={`/read/${mainArticle.slug}`}>
+          <Link href={`/read/${mainArticle?.slug}`}>
             <div className="space-y-4">
               <img
                 alt="article image"
                 className="w-full h-[550px] rounded-md object-cover"
-                src={mainArticle.imageUrl}
+                src={mainArticle?.imageUrl}
               />
               <div className="flex flex-row justify-between items-center">
                 <div className="flex flex-row gap-4">
                   <p className="p-2 border rounded-md text-sm">
-                    {mainArticle.category}
+                    {mainArticle?.category}
                   </p>
                   <p className="p-2 border rounded-md text-sm">
-                    {mainArticle.authorName}
+                    {mainArticle?.authorName}
                   </p>
                 </div>
 
                 <div className="text-sm flex flex-row gap-2">
-                  <p>{format(mainArticle.datePublished, "MMM dd, yyyy")}</p>
+                  <p>{format(mainArticle?.datePublished, "MMM dd, yyyy")}</p>
                   ---
-                  <p>{readingTime(mainArticle.contents).minutes}</p>
+                  <p>{readingTime(mainArticle?.contents).minutes}</p>
                 </div>
               </div>
-              <p className="text-5xl line-clamp-2">{mainArticle.title}</p>
+              <p className="text-5xl line-clamp-2">{mainArticle?.title}</p>
             </div>
           </Link>
         </div>
@@ -93,13 +93,13 @@ export const Highlight = ({
       return (
         <div className="flex flex-row bg-black text-white p-10 gap-10">
           <div className="flex-2/3 flex flex-col justify-between">
-            <Link href={`/read/${mainArticle.slug}`}>
+            <Link href={`/read/${mainArticle?.slug}`}>
               <div className="space-y-5">
                 <div className="flex flex-row gap-5 text-sm">
-                  <p>{mainArticle.category}</p>
-                  <p>{readingTime(mainArticle.contents).minutes}</p>
+                  <p>{mainArticle?.category}</p>
+                  <p>{readingTime(mainArticle?.contents).minutes}</p>
                 </div>
-                <p className="line-clamp-4 text-6xl">{mainArticle.title}</p>
+                <p className="line-clamp-4 text-6xl">{mainArticle?.title}</p>
               </div>
             </Link>
             <div className="flex flex-row justify-between">
@@ -148,32 +148,32 @@ export const Highlight = ({
     case 4:
       return (
         <div className="p-10 bg-black text-gray-600">
-          <Link href={`/read/${mainArticle.slug}`}>
+          <Link href={`/read/${mainArticle?.slug}`}>
             <div className="grid grid-cols-2">
               <div className="space-y-10">
                 <p className="line-clamp-3 text-6xl font-semibold text-white">
-                  {mainArticle.title}
+                  {mainArticle?.title}
                 </p>
-                <p className="line-clamp-4 text-sm">{mainArticle.contents}</p>
+                <p className="line-clamp-4 text-sm">{mainArticle?.contents}</p>
                 <div className="flex flex-row space-x-2 h-5 items-center text-sm">
-                  <p>{mainArticle.category}</p>
+                  <p>{mainArticle?.category}</p>
                   <Separator
                     orientation="vertical"
                     className="h-3 bg-neutral-500"
                   />
-                  <p>{mainArticle.authorName}</p>
+                  <p>{mainArticle?.authorName}</p>
                   <Separator
                     orientation="vertical"
                     className="h-3 bg-neutral-500"
                   />
-                  <p>{format(mainArticle.datePublished, "MMM dd, yyyy")}</p>
+                  <p>{format(mainArticle?.datePublished, "MMM dd, yyyy")}</p>
                 </div>
               </div>
               <div className="h-[500px] justify-center flex">
                 <img
                   className="object-cover w-[500px] h-full"
                   alt="article image"
-                  src={mainArticle.imageUrl}
+                  src={mainArticle?.imageUrl}
                 />
               </div>
             </div>
@@ -181,7 +181,7 @@ export const Highlight = ({
           <Separator className="bg-red-600 my-10" />
           <div className="flex flex-row justify-between">
             {more.map((article, idx) => (
-              <Link href={`/read/${mainArticle.slug}`} key={idx}>
+              <Link href={`/read/${mainArticle?.slug}`} key={idx}>
                 <div className="flex flex-row gap-4">
                   <img
                     className="size-24 object-cover"
@@ -195,7 +195,9 @@ export const Highlight = ({
                         orientation="vertical"
                         className="bg-neutral-500"
                       />
-                      <p>{format(mainArticle.datePublished, "MMM dd, yyyy")}</p>
+                      <p>
+                        {format(mainArticle?.datePublished, "MMM dd, yyyy")}
+                      </p>
                     </div>
                     <p className="line-clamp-2 text-white">{article.title}</p>
                     <div className="text-sm flex flex-row gap-2 h-3 items-center">

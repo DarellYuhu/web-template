@@ -1,16 +1,20 @@
 import { getArticles } from "@/api/articles";
 import { getCategory } from "@/api/categories";
+import { PaginationButton } from "@/components/pagination-button";
 import Link from "next/link";
 import readingTime from "reading-time";
 
 export default async function CategoryPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ page?: string }>;
 }) {
   const { slug } = await params;
+  const { page } = await searchParams;
   const category = await getCategory({ slug });
-  const articles = await getArticles({ category: slug });
+  const articles = await getArticles({ category: slug, page });
   return (
     <div className="p-10 space-y-8">
       <p>
@@ -39,6 +43,7 @@ export default async function CategoryPage({
           </Link>
         ))}
       </div>
+      <PaginationButton articleLength={articles.length} />
     </div>
   );
 }

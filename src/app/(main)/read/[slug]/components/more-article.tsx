@@ -1,7 +1,7 @@
 import { ArticleType } from "@/api/articles";
-import { Separator } from "@/components/ui/separator";
+// import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
-import { Fragment } from "react";
+// import { Fragment } from "react";
 
 export const MoreArticle = ({
   articles,
@@ -34,44 +34,44 @@ export const MoreArticle = ({
     </div>
   );
 
-  return (
-    <div className="bg-black text-white p-4">
-      <p className="text-xl border-l-2 border-l-red-500 pl-4">
-        Recommended For You
-      </p>
-      <div className="space-y-4 mt-4">
-        {recommendedArticle.slice(0, 4).map((article, idx) => (
-          <div key={idx} className="flex flex-row gap-4">
-            <img src={article.imageUrl} className="object-cover w-24 h-16" />
-            <div>
-              <div className="flex flex-row gap-4 text-[12px]">
-                <p>{article.category}</p>
-                <p>{article.datePublished}</p>
-              </div>
-              <p className="line-clamp-2 w-52">{article.title}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
-  return (
-    <div className="space-y-4 ">
-      {recommendedArticle.slice(0, 4).map((article, idx, arr) => (
-        <Fragment key={idx}>
-          <div className="flex flex-row gap-4 items-center">
-            <div className="w-24 h-16 items-center">
-              <img
-                src={article.imageUrl}
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <p className="line-clamp-2 w-52">{article.title}</p>
-          </div>
-          {idx + 1 < arr.length && <Separator />}
-        </Fragment>
-      ))}
-    </div>
-  );
+  // return (
+  //   <div className="bg-black text-white p-4">
+  //     <p className="text-xl border-l-2 border-l-red-500 pl-4">
+  //       Recommended For You
+  //     </p>
+  //     <div className="space-y-4 mt-4">
+  //       {articles.slice(0, 4).map((article, idx) => (
+  //         <div key={idx} className="flex flex-row gap-4">
+  //           <img src={article.imageUrl} className="object-cover w-24 h-16" />
+  //           <div>
+  //             <div className="flex flex-row gap-4 text-[12px]">
+  //               <p>{article.category}</p>
+  //               <p>{article.datePublished}</p>
+  //             </div>
+  //             <p className="line-clamp-2 w-52">{article.title}</p>
+  //           </div>
+  //         </div>
+  //       ))}
+  //     </div>
+  //   </div>
+  // );
+  //
+  // return (
+  //   <div className="space-y-4 ">
+  //     {recommendedArticle.slice(0, 4).map((article, idx, arr) => (
+  //       <Fragment key={idx}>
+  //         <div className="flex flex-row gap-4 items-center">
+  //           <div className="w-24 h-16 items-center">
+  //             <img
+  //               src={article.imageUrl}
+  //               className="object-cover w-full h-full"
+  //             />
+  //           </div>
+  //           <p className="line-clamp-2 w-52">{article.title}</p>
+  //         </div>
+  //         {idx + 1 < arr.length && <Separator />}
+  //       </Fragment>
+  //     ))}
+  //   </div>
+  // );
 };

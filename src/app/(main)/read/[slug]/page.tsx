@@ -18,7 +18,7 @@ export default async function ArticlePage({
           <Markdown>{article?.contents}</Markdown>
         </div>
         <div className="w-1/4">
-          <MoreArticle />
+          <MoreArticle articles={article.recommended} />
         </div>
       </div>
     </article>

@@ -11,7 +11,7 @@ export default async function ArticlePage({
   const { slug } = await params;
   const article = await getArticle({ slug });
   return (
-    <article>
+    <article className="px-56">
       <ArticleHeader article={article} />
       <div className="flex flex-row p-10 gap-8">
         <div className="markdown w-3/4">

@@ -26,3 +26,9 @@ export const otherSchema = z.array(
     articleId: z.string().nonempty(),
   }),
 );
+
+export const templateSchema = z.object({
+  header: z.number().max(4),
+  highlight: z.number().max(4),
+  topPicks: z.number().max(4),
+});

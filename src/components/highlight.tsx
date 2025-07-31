@@ -8,14 +8,14 @@ import Link from "next/link";
 export const Highlight = ({
   highlights,
   populars,
+  selected,
 }: {
   highlights: HighlightType;
   populars: PopularType;
+  selected?: number;
 }) => {
   const more = highlights.slice(1);
   const mainArticle = highlights[0] as HighlightType[number] | undefined;
-  let selected = 1;
-  selected = Math.floor(Math.random() * 4) + 1;
 
   switch (selected) {
     case 1:

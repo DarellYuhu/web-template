@@ -1,6 +1,7 @@
 import { ArticleType } from "@/api/articles";
 // import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
+import Link from "next/link";
 // import { Fragment } from "react";
 
 export const MoreArticle = ({
@@ -13,22 +14,24 @@ export const MoreArticle = ({
       <p className="text-xl border-b-2 border-b-neutral-400 pb-4">
         Recommended For You
       </p>
-      <div className="space-y-4 mt-4">
+      <div className="flex flex-col gap-4 mt-4">
         {articles.slice(0, 4).map((article, idx) => (
-          <div key={idx} className="flex flex-row gap-4">
-            <img
-              src={article.imageUrl}
-              className="object-cover size-28"
-              alt="article image"
-            />
-            <div className="flex flex-col justify-evenly">
-              <p className="line-clamp-3 w-52">{article.title}</p>
-              <div className="text-[12px] flex flex-row gap-3">
-                <p>{format(article?.datePublished, "MMM dd, yyyy")}</p>
-                <p>{article.authorName}</p>
+          <Link key={idx} href={`/read/${article.slug}`}>
+            <div className="flex flex-row gap-4">
+              <img
+                src={article.imageUrl}
+                className="object-cover size-28"
+                alt="article image"
+              />
+              <div className="flex flex-col justify-evenly">
+                <p className="line-clamp-3 w-52">{article.title}</p>
+                <div className="text-[12px] flex flex-row gap-3">
+                  <p>{format(article?.datePublished, "MMM dd, yyyy")}</p>
+                  <p>{article.authorName}</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

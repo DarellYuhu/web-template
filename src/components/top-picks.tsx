@@ -7,10 +7,13 @@ import readingTime from "reading-time";
 import { format } from "date-fns";
 import { TopPickType } from "@/api/top-picks";
 
-export const TopPicks = ({ data }: { data: TopPickType }) => {
-  let selected = 1;
-  selected = Math.floor(Math.random() * 4) + 1;
-
+export const TopPicks = ({
+  data,
+  selected,
+}: {
+  data: TopPickType;
+  selected?: number;
+}) => {
   switch (selected) {
     case 1:
       return (
@@ -20,29 +23,28 @@ export const TopPicks = ({ data }: { data: TopPickType }) => {
           </div>
           <div className="flex flex-row justify-between">
             {data.slice(0, 4).map((article, idx) => (
-              <div
-                key={idx}
-                className="w-72 space-y-3 rounded-md border p-2 shadow-md"
-              >
-                <img
-                  className="h-48 w-full object-cover rounded-md"
-                  src={article.imageUrl}
-                  alt="article image"
-                />
-                <p className="font-semibold line-clamp-2">{article.title}</p>
-                <p className="text-sm line-clamp-2">{article.contents}</p>
-                <div className="flex flex-row items-center gap-3 p-2 bg-neutral-100 rounded-lg">
-                  <div className="rounded-lg p-2 bg-neutral-200">
-                    <User size={25} />
-                  </div>
-                  <div>
-                    <p className="text-[14px] font-semibold">
-                      {article.authorName}
-                    </p>
-                    <p>{format(article.datePublished, "MMM dd, yyyy")}</p>
+              <Link key={idx} href={`/read/${article.slug}`}>
+                <div className="w-72 space-y-3 rounded-md border p-2 shadow-md">
+                  <img
+                    className="h-48 w-full object-cover rounded-md"
+                    src={article.imageUrl}
+                    alt="article image"
+                  />
+                  <p className="font-semibold line-clamp-2">{article.title}</p>
+                  <p className="text-sm line-clamp-2">{article.contents}</p>
+                  <div className="flex flex-row items-center gap-3 p-2 bg-neutral-100 rounded-lg">
+                    <div className="rounded-lg p-2 bg-neutral-200">
+                      <User size={25} />
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold">
+                        {article.authorName}
+                      </p>
+                      <p>{format(article.datePublished, "MMM dd, yyyy")}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

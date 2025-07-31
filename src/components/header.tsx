@@ -4,10 +4,14 @@ import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export const Header = ({ categories }: { categories: Category[] }) => {
+export const Header = ({
+  categories,
+  selected,
+}: {
+  categories: Category[];
+  selected?: number;
+}) => {
   const LOGO_PATH = process.env.LOGO_PATH;
-  let selected = 1;
-  selected = Math.floor(Math.random() * 4) + 1;
 
   switch (selected) {
     case 1:

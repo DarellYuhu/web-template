@@ -5,10 +5,13 @@ import { format } from "date-fns";
 import { User2 } from "lucide-react";
 import readingTime from "reading-time";
 
-export const ArticleHeader = ({ article }: { article: ArticleType }) => {
-  let selected = 1;
-  selected = Math.floor(Math.random() * 3) + 1;
-
+export const ArticleHeader = ({
+  article,
+  selected,
+}: {
+  article: ArticleType;
+  selected?: number;
+}) => {
   switch (selected) {
     case 1:
       return (
@@ -32,7 +35,7 @@ export const ArticleHeader = ({ article }: { article: ArticleType }) => {
             <div className="flex flex-row gap-2 items-center h-3">
               <p>{format(article.datePublished, "dd MMM, yyyy")}</p>
               <Separator orientation="vertical" className="bg-neutral-400" />
-              <p>{readingTime(article.contents).minutes}</p>
+              <p>{readingTime(article.contents).text}</p>
             </div>
           </div>
 

@@ -28,7 +28,8 @@ export const otherSchema = z.array(
 );
 
 export const templateSchema = z.object({
-  header: z.number().max(4),
-  highlight: z.number().max(4),
-  topPicks: z.number().max(4),
+  header: z.number().max(4).optional(),
+  highlight: z.number().max(4).optional(),
+  topPicks: z.number().max(4).optional(),
+  articleHeader: z.number().max(3).optional(),
 });

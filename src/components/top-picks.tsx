@@ -117,7 +117,7 @@ export const TopPicks = ({
                     className="bg-neutral-700"
                   />
                   <p className="text-sm">
-                    {readingTime(article.contents).minutes}
+                    <p>{readingTime(article.contents).text}</p>
                   </p>
                 </div>
               </div>
@@ -157,7 +157,7 @@ export const TopPicks = ({
                     className="bg-neutral-700"
                   />
                   <p className="text-sm">
-                    {readingTime(article.contents).minutes}
+                    <p>{readingTime(article.contents).text}</p>
                   </p>
                 </div>
               </div>

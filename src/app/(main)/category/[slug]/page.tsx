@@ -36,7 +36,7 @@ export default async function CategoryPage({
                 </div>
                 <div className="flex flex-row gap-2">
                   <p>{item.category}</p>|
-                  <p>{readingTime(item.contents).minutes} mins read</p>
+                  <p>{readingTime(item.contents).text}</p>
                 </div>
               </div>
             </div>

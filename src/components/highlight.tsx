@@ -83,7 +83,7 @@ export const Highlight = ({
                   )}
                   ---
                   {mainArticle && (
-                    <p>{readingTime(mainArticle?.contents).minutes}</p>
+                    <p>{readingTime(mainArticle.contents).minutes}</p>
                   )}
                 </div>
               </div>
@@ -137,7 +137,7 @@ export const Highlight = ({
                     <div className="flex flex-col justify-center">
                       <div className="space-x-4 flex flex-row text-sm">
                         <p>{article.category}</p>
-                        <p>{readingTime(article.contents).minutes} minutes</p>
+                        <p>{readingTime(article.contents).minutes}</p>
                       </div>
                       <div className="w-64">
                         <p className="line-clamp-2">{article.title}</p>
@@ -215,7 +215,7 @@ export const Highlight = ({
                         orientation="vertical"
                         className="bg-neutral-500"
                       />
-                      <p>{readingTime(article.contents).minutes}</p>
+                      <p>{readingTime(article.contents).minutes} minutes</p>
                     </div>
                   </div>
                 </div>
